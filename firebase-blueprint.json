@@ -1,0 +1,88 @@
+{
+  "entities": {
+    "PlaylistItem": {
+      "title": "PlaylistItem",
+      "description": "Video in the synchronized continuous playlist for Entre Apus TV",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "author": { "type": "string" },
+        "description": { "type": "string" },
+        "sourceType": { "type": "string", "enum": ["youtube", "drive", "direct"] },
+        "originalUrl": { "type": "string" },
+        "embedUrl": { "type": "string" },
+        "thumbnailUrl": { "type": "string" },
+        "videoId": { "type": "string" },
+        "fileId": { "type": "string" },
+        "order": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "title", "sourceType", "embedUrl"]
+    },
+    "MediaItem": {
+      "title": "MediaItem",
+      "description": "Cultural photo or video in the community gallery",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "author": { "type": "string" },
+        "description": { "type": "string" },
+        "type": { "type": "string", "enum": ["video", "photo"] },
+        "sourceType": { "type": "string" },
+        "videoUrl": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "likes": { "type": "number" },
+        "date": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "title", "category", "author", "type"]
+    },
+    "SiteSettings": {
+      "title": "SiteSettings",
+      "description": "Channel settings, live transmission data, and cover image",
+      "type": "object",
+      "properties": {
+        "liveTitle": { "type": "string" },
+        "liveUrl": { "type": "string" },
+        "isLiveActive": { "type": "boolean" },
+        "coverImageUrl": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      }
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Live broadcast chat message",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "author": { "type": "string" },
+        "text": { "type": "string" },
+        "time": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "author", "text"]
+    }
+  },
+  "firestore": {
+    "/playlist/{videoId}": {
+      "schema": "PlaylistItem",
+      "description": "Public video playlist synchronized across all viewers and devices"
+    },
+    "/gallery/{itemId}": {
+      "schema": "MediaItem",
+      "description": "Community and cultural media items (videos and photos)"
+    },
+    "/settings/{settingId}": {
+      "schema": "SiteSettings",
+      "description": "Global live stream and display settings"
+    },
+    "/chat/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Live chat messages stream"
+    }
+  }
+}

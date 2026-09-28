@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Playlist collection: Publicly readable and writable for synchronized live programming
+    match /playlist/{videoId} {
+      allow read, write: if true;
+    }
+
+    // Gallery collection: Cultural photos and videos
+    match /gallery/{itemId} {
+      allow read, write: if true;
+    }
+
+    // Settings collection: Live transmission stream URL and cover image
+    match /settings/{settingId} {
+      allow read, write: if true;
+    }
+
+    // Connection test health check document
+    match /test/{docId} {
+      allow read, write: if true;
+    }
+
+    // Live chat messages: Publicly readable and writable
+    match /chat/{messageId} {
+      allow read, create: if true;
+      allow update, delete: if true;
+    }
+
+    // Default catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

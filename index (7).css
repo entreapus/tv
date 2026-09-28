@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --color-apu-800: #0f1f3d;
+  --color-apu-900: #070f20;
+  --color-apu-950: #040915;
+  --color-sol-400: #fbbf24;
+  --color-sol-500: #f59e0b;
+  --color-sol-600: #d97706;
+  --color-terracotta-400: #f87171;
+  --color-terracotta-500: #ef4444;
+  --color-terracotta-600: #e05938;
+}
+
+@layer utilities {
+  .shadow-glow {
+    box-shadow: 0 0 35px -5px rgba(224, 89, 56, 0.35);
+  }
+  .shadow-glow-gold {
+    box-shadow: 0 0 30px -5px rgba(245, 158, 11, 0.4);
+  }
+}
